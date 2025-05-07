@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinod Kumar Vemula | Data Engineer Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --secondary: #2563EB;
+            --accent: #10B981;
+            --background: #0F172A;
+            --text: #E2E8F0;
+            --card: #1E293B;
+        }
+        
+        @font-face {
+            font-family: 'Poppins';
+            src: url('https://cdn.jsdelivr.net/npm/@fontsource/poppins@4.5.0/files/poppins-latin-400-normal.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Poppins';
+            src: url('https://cdn.jsdelivr.net/npm/@fontsource/poppins@4.5.0/files/poppins-latin-700-normal.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            background-color: var(--background);
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(79, 70, 229, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+        
+        .section {
+            min-height: 100vh;
+            padding: 4rem 0;
+        }
+        
+        .glass {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .exp-line {
+            position: absolute;
+            width: 4px;
+            height: calc(100% - 3rem);
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+            left: 1.5rem;
+            top: 3rem;
+        }
+        
+        .orbit {
+            position: relative;
+            width: 100%;
+            height: 400px;
+        }
+        
+        .planet {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 0 20px rgba(79, 70, 229, 0.6);
+        }
+        
+        .orbit-path {
+            position: absolute;
+            width: 90%;
+            height: 90%;
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            top: 5%;
+            left: 5%;
+            border-radius: 50%;
+        }
+        
+        .moon {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.7rem;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .moon:hover {
+            transform: scale(1.2);
+            z-index: 10;
+        }
+        
+        .aws {
+            background: linear-gradient(135deg, #FF9900, #FFC400);
+            top: 20%;
+            left: 75%;
+        }
+        
+        .azure {
+            background: linear-gradient(135deg, #0078D4, #00A2ED);
+            bottom: 20%;
+            right: 75%;
+        }
+        
+        .gcp {
+            background: linear-gradient(135deg, #4285F4, #34A853);
+            bottom: 20%;
+            left: 75%;
+        }
+        
+        .prog-bar {
+            height: 12px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            position: relative;
+            margin: 8px 0;
+            transition: all 0.5s ease;
+        }
+        
+        .prog-bar-fill {
+            height: 100%;
+            border-radius: 6px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: all 1.2s ease;
+            width: 0;
+        }
+        
+        .card {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary);
+        }
+        
+        .animate-float {
+            animation: float 5s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .glow-text {
+            text-shadow: 0 0 10px rgba(79, 70, 229, 0.5);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 3rem;
+            animation: fadeIn 0.5s ease forwards;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 0;
+            width: 1.5rem;
+            height: 1.5rem;
+            background: var(--primary);
+            border-radius: 50%;
+            top: 0;
+            z-index: 2;
+            box-shadow: 0 0 0 5px rgba(79, 70, 229, 0.2);
+        }
+
+        .progress-ring {
+            transition: stroke-dashoffset 0.35s;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+            stroke-linecap: round;
+        }
+        
+        .progress-ring-circle {
+            stroke: var(--accent);
+            fill: transparent;
+            stroke-width: 5;
+            transition: all 0.6s ease;
+        }
+        
+        .progress-ring-bg {
+            stroke: rgba(255, 255, 255, 0.1);
+            fill: transparent;
+            stroke-width: 5;
+        }
+        
+        .badge {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 0.3rem 0.8rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .badge:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .project-card .project-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .highlight-text {
+            color: var(--accent);
+            font-weight: bold;
+        }
+        
+        .nav-item {
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.2s;
+        }
+        
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-item.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+            
+            .glass {
+                background: white;
+                backdrop-filter: none;
+                box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            }
+            
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Animation classes */
+        .fade-in-slow {
+            opacity: 0;
+            animation: fadeIn 1.5s ease forwards;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        
+        .slide-in-right {
+            opacity: 0;
+            animation: slideInRight 0.8s ease forwards;
+        }
+        
+        @keyframes slideInRight {
+            0% { opacity: 0; transform: translateX(100px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+        
+        /* Game elements */
+        .game-progress {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin-top: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .game-progress-fill {
+            height: 100%;
+            background: var(--accent);
+            width: 0%;
+            transition: width 0.8s ease;
+        }
+        
+        .achievement {
+            position: relative;
+            transition: all 0.3s;
+        }
+        
+        .achievement:hover {
+            transform: scale(1.05);
+        }
+        
+        .achievement-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        }
+        
+        .achievement.locked .achievement-icon {
+            background: #4B5563;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+    <div id="particles-js"></div>
+
+    <!-- Header / Hero Section -->
+    <header class="section flex items-center justify-center relative z-10">
+        <div class="container mx-auto px-4">
+            <div class="glass p-8 max-w-5xl mx-auto">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="w-full md:w-1/2 mb-8 md:mb-0">
+                        <h1 class="text-4xl md:text-6xl font-bold mb-2 glow-text fade-in-slow">Vinod Kumar <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500">Vemula</span></h1>
+                        <h2 class="text-xl md:text-2xl mb-4 text-blue-300 fade-in">Cloud & Data Engineering Expert</h2>
+                        <p class="mb-6 text-lg opacity-80 fade-in">Transforming data into actionable insights across Azure, AWS, and GCP platforms</p>
+                        <div class="flex flex-wrap gap-3 mb-6 fade-in">
+                            <a href="mailto:vvinodvemula03@gmail.com" class="flex items-center gap-2 badge">
+                                <i class="fas fa-envelope"></i> vvinodvemula03@gmail.com
+                            </a>
+                            <a href="tel:+12795003888" class="flex items-center gap-2 badge">
+                                <i class="fas fa-phone"></i> (279) 500-3888
+                            </a>
+                            <a href="https://linkedin.com/in/vinod-kumar-vemula007" target="_blank" class="flex items-center gap-2 badge">
+                                <i class="fab fa-linkedin"></i> LinkedIn
+                            </a>
+                            <span class="flex items-center gap-2 badge">
+                                <i class="fas fa-map-marker-alt"></i> Dallas, TX 75071
+                            </span>
+                        </div>
+                        <div class="game-progress">
+                            <div class="game-progress-fill" id="profile-completion" data-progress="0"></div>
+                        </div>
+                        <p class="text-sm mt-2 text-center">View more to unlock achievements</p>
+                    </div>
+                    <div class="w-full md:w-1/2 flex justify-center">
+                        <div class="orbit">
+                            <div class="planet">
+                                <div class="text-center">
+                                    <i class="fas fa-database text-3xl mb-2"></i>
+                                    <div>Data Engineer</div>
+                                </div>
+                            </div>
+                            <div class="orbit-path"></div>
+                            <div class="moon aws" data-cloud="AWS">
+                                <i class="fab fa-aws"></i>
+                            </div>
+                            <div class="moon azure" data-cloud="Azure">
+                                <i class="fab fa-microsoft"></i>
+                            </div>
+                            <div class="moon gcp" data-cloud="GCP">
+                                <i class="fab fa-google"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Skills Section -->
+    <section class="section relative z-10 py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center glow-text" data-aos="fade-up">Technical Expertise</h2>
+            <div class="glass p-8 max-w-5xl mx-auto">
+                <div class="mb-12" data-aos="fade-up">
+                    <h3 class="text-2xl font-bold mb-6 text-center">Cloud Platforms</h3>
+                    <div class="flex flex-wrap justify-center">
+                        <div class="w-full lg:w-1/3 p-4">
+                            <div class="card glass h-full p-6 text-center">
+                                <div class="text-blue-400 text-4xl mb-4"><i class="fab fa-microsoft"></i></div>
+                                <h4 class="text-xl font-bold mb-2">Azure</h4>
+                                <p class="mb-4 opacity-70">Data Factory, Synapse, Databricks</p>
+                                <div class="flex justify-center my-4">
+                                    <svg class="progress-ring" width="100" height="100">
+                                        <circle class="progress-ring-bg" r="40" cx="50" cy="50" />
+                                        <circle class="progress-ring-circle" r="40" cx="50" cy="50" stroke-dasharray="251.2" stroke-dashoffset="50" />
+                                    </svg>
+                                </div>
+                                <div class="badges flex flex-wrap justify-center mt-2">
+                                    <span class="badge m-1">Data Factory</span>
+                                    <span class="badge m-1">Synapse</span>
+                                    <span class="badge m-1">Databricks</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full lg:w-1/3 p-4">
+                            <div class="card glass h-full p-6 text-center">
+                                <div class="text-yellow-500 text-4xl mb-4"><i class="fab fa-aws"></i></div>
+                                <h4 class="text-xl font-bold mb-2">AWS</h4>
+                                <p class="mb-4 opacity-70">S3, Redshift, Glue, Lambda</p>
+                                <div class="flex justify-center my-4">
+                                    <svg class="progress-ring" width="100" height="100">
+                                        <circle class="progress-ring-bg" r="40" cx="50" cy="50" />
+                                        <circle class="progress-ring-circle" r="40" cx="50" cy="50" stroke-dasharray="251.2" stroke-dashoffset="62" />
+                                    </svg>
+                                </div>
+                                <div class="badges flex flex-wrap justify-center mt-2">
+                                    <span class="badge m-1">S3</span>
+                                    <span class="badge m-1">Redshift</span>
+                                    <span class="badge m-1">Lambda</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full lg:w-1/3 p-4">
+                            <div class="card glass h-full p-6 text-center">
+                                <div class="text-green-500 text-4xl mb-4"><i class="fab fa-google"></i></div>
+                                <h4 class="text-xl font-bold mb-2">GCP</h4>
+                                <p class="mb-4 opacity-70">BigQuery, Dataflow, Pub/Sub</p>
+                                <div class="flex justify-center my-4">
+                                    <svg class="progress-ring" width="100" height="100">
+                                        <circle class="progress-ring-bg" r="40" cx="50" cy="50" />
+                                        <circle class="progress-ring-circle" r="40" cx="50" cy="50" stroke-dasharray="251.2" stroke-dashoffset="88" />
+                                    </svg>
+                                </div>
+                                <div class="badges flex flex-wrap justify-center mt-2">
+                                    <span class="badge m-1">BigQuery</span>
+                                    <span class="badge m-1">Dataflow</span>
+                                    <span class="badge m-1">Pub/Sub</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-8" data-aos="fade-up">
+                    <h3 class="text-2xl font-bold mb-6">Core Skills</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold">Big Data Technologies</span>
+                                <span class="text-sm">95%</span>
+                            </div>
+                            <div class="prog-bar" data-value="95">
+                                <div class="prog-bar-fill" style="width: 0%"></div>
+                            </div>
+                            <div class="mt-1 flex flex-wrap">
+                                <span class="badge">Hadoop</span>
+                                <span class="badge">Spark</span>
+                                <span class="badge">Hive</span>
+                                <span class="badge">Kafka</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold">Programming</span>
+                                <span class="text-sm">90%</span>
+                            </div>
+                            <div class="prog-bar" data-value="90">
+                                <div class="prog-bar-fill" style="width: 0%"></div>
+                            </div>
+                            <div class="mt-1 flex flex-wrap">
+                                <span class="badge">Python</span>
+                                <span class="badge">SQL</span>
+                                <span class="badge">Scala</span>
+                                <span class="badge">Java</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold">ETL/Orchestration</span>
+                                <span class="text-sm">85%</span>
+                            </div>
+                            <div class="prog-bar" data-value="85">
+                                <div class="prog-bar-fill" style="width: 0%"></div>
+                            </div>
+                            <div class="mt-1 flex flex-wrap">
+                                <span class="badge">Data Factory</span>
+                                <span class="badge">AWS Glue</span>
+                                <span class="badge">Airflow</span>
+                                <span class="badge">Snowflake</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold">DevOps</span>
+                                <span class="text-sm">80%</span>
+                            </div>
+                            <div class="prog-bar" data-value="80">
+                                <div class="prog-bar-fill" style="width: 0%"></div>
+                            </div>
+                            <div class="mt-1 flex flex-wrap">
+                                <span class="badge">Docker</span>
+                                <span class="badge">Kubernetes</span>
+                                <span class="badge">Jenkins</span>
+                                <span class="badge">Terraform</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8" data-aos="fade-up">
+                    <h3 class="text-2xl font-bold mb-4">Achievements</h3>
+                    <div class="flex flex-wrap justify-center gap-6">
+                        <div class="achievement">
+                            <div class="achievement-icon">
+                                <i class="fab fa-microsoft"></i>
+                            </div>
+                            <div class="text-center text-sm">
+                                <div class="font-bold">Azure Data Engineer</div>
+                                <div class="opacity-70">Associate (2023)</div>
+                            </div>
+                        </div>
+                        <div class="achievement">
+                            <div class="achievement-icon">
+                                <i class="fab fa-aws"></i>
+                            </div>
+                            <div class="text-center text-sm">
+                                <div class="font-bold">AWS Big Data</div>
+                                <div class="opacity-70">Specialty (2022)</div>
+                            </div>
+                        </div>
+                        <div class="achievement">
+                            <div class="achievement-icon">
+                                <i class="fab fa-google"></i>
+                            </div>
+                            <div class="text-center text-sm">
+                                <div class="font-bold">GCP Data Engineer</div>
+                                <div class="opacity-70">Professional (2021)</div>
+                            </div>
+                        </div>
+                        <div class="achievement locked">
+                            <div class="achievement-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div class="text-center text-sm">
+                                <div class="font-bold">???</div>
+                                <div class="opacity-70">Locked</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="section relative z-10 py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center glow-text" data-aos="fade-up">Professional Journey</h2>
+            <div class="glass p-8 max-w-5xl mx-auto">
+                <div class="relative ml-3">
+                    <div class="exp-line"></div>
+                    
+                    <div class="timeline-item" data-aos="fade-up">
+                        <div class="timeline-dot"></div>
+                        <h3 class="text-2xl font-bold mb-1">Azure Data Engineer</h3>
+                        <div class="flex flex-col md:flex-row md:items-center text-sm mb-3">
+                            <div class="flex items-center mr-4">
+                                <i class="fas fa-building mr-2 text-blue-400"></i> BMO Bank
+                            </div>
+                            <div class="flex items-center mr-4">
+                                <i class="fas fa-map-marker-alt mr-2 text-blue-400"></i> Chicago, IL
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-calendar mr-2 text-blue-400"></i> June 2023 - Present
+                            </div>
+                        </div>
+                        <div class="card glass p-5 mt-3">
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Designed data models in <span class="highlight-text">Azure Synapse</span> and SQL Server for regulatory compliance and financial reporting for 50+ stakeholders.</li>
+                                <li>Implemented CI/CD pipelines with <span class="highlight-text">Azure DevOps</span> and ARM templates, accelerating deployment cycles by 30%.</li>
+                                <li>Built <span class="highlight-text">Power BI dashboards</span> from Synapse data, delivering insights to management on $1B+ portfolios.</li>
+                                <li>Streamlined data ingestion with <span class="highlight-text">Azure Kubernetes Service</span> and Docker, improving scalability for 10M+ daily transactions.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item" data-aos="fade-up">
+                        <div class="timeline-dot"></div>
+                        <h3 class="text-2xl font-bold mb-1">AWS Data Engineer</h3>
+                        <div class="flex flex-col md:flex-row md:items-center text-sm mb-3">
+                            <div class="flex items-center mr-4">
+                                <i class="fas fa-building mr-2 text-yellow-500"></i> John Deere
+                            </div>
+                            <div class="flex items-center mr-4">
+                                <i class="fas fa-map-marker-alt mr-2 text-yellow-500"></i> Moline, IL
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-calendar mr-2 text-yellow-500"></i> April 2022 - May 2023
+                            </div>
+                        </div>
+                        <div class="card glass p-5 mt-3">
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Automated infrastructure with <span class="highlight-text">CloudFormation and Terraform</span>, cutting provisioning time by 25%.</li>
+                                <li>Integrated IoT data into <span class="highlight-text">Redshift</span>, enabling real-time analytics for operational efficiency across 10,000+ machines.</li>
+                                <li>Developed serverless <span class="highlight-text">Lambda</span> workflows to process streaming sensor data, reducing infrastructure costs by 20%.</li>
+                                <li>Monitored pipeline performance with <span class="highlight-text">CloudWatch and Grafana</span>, resolving bottlenecks to achieve 99.8% uptime.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item" data-aos="fade-up">
+                        <div class="timeline-dot"></div>
+                        <h3 class="text-2xl font-bold mb-1">Sr. GCP Data Engineer</h3>
+                        <div class="flex flex-col md:flex-row md:items-center text-sm mb-3">
+                            <div class="flex items-center mr-4">
+                                <i class="fas fa-building mr-2 text-green-500"></i> P&G (Infosys)
+                            </div>
+                            <div class="flex items-center mr-4">
+                                <i class="fas fa-map-marker-alt mr-2 text-green-500"></i> Bangalore, India
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-calendar mr-2 text-green-500"></i> March 2019 - December 2021
+                            </div>
+                        </div>
+                        <div class="card glass p-5 mt-3">
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Automated CI/CD workflows with <span class="highlight-text">Cloud Composer</span>, reducing deployment errors by 15%.</li>
+                                <li>Utilized Python and SQL for data transformation, supporting sales analytics for 50+ products.</li>
+                                <li>Implemented <span class="highlight-text">Cloud Pub/Sub and Kafka</span> for real-time analytics, processing 500K+ daily transactions.</li>
+                                <li>Leveraged <span class="highlight-text">Cloud Natural Language API</span> to analyze customer sentiment, improving product satisfaction by 10%.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item" data-aos="fade-up">
+                        <div class="timeline-dot"></div>
+                        <h3 class="text-2xl font-bold mb-1">GCP Data Engineer</h3>
+                        <div class="flex flex-col md:flex-row md:items-center text-sm mb-3">
+                            <div class="flex items-center mr-4">
+                                <i class="fas fa-building mr-2 text-green-500"></i> Aviva Life Insurance
+                            </div>
+                            <div class="flex items-center mr-4">
+                                <i class="fas fa-map-marker-alt mr-2 text-green-500"></i> Bangalore, India
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-calendar mr-2 text-green-500"></i> January 2018 - February 2019
+                            </div>
+                        </div>
+                        <div class="card glass p-5 mt-3">
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Developed <span class="highlight-text">BigQuery ETL</span> pipelines for 500K+ insurance policies with 99.9% uptime.</li>
+                                <li>Created <span class="highlight-text">Power BI dashboards</span> integrated with BigQuery, enhancing sales tracking for 200+ agents.</li>
+                                <li>Integrated <span class="highlight-text">AWS S3 and Redshift</span> with GCP for multi-cloud processing, reducing data transfer costs by 15%.</li>
+                                <li>Used <span class="highlight-text">Sqoop and Impala</span> for high-speed analytics on claims data, supporting regulatory reporting for 100K+ policies.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section relative z-10 py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center glow-text" data-aos="fade-up">Showcase Projects</h2>
+            <div class="glass p-8 max-w-5xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="project-card glass p-6" data-aos="fade-up">
+                        <div class="project-content">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-blue-500 rounded-full p-3 mr-4">
+                                    <i class="fas fa-chart-line text-white text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold">Real-Time Banking Analytics Pipeline</h3>
+                            </div>
+                            <div class="mb-4 text-sm text-blue-300">BMO Bank, 2023</div>
+                            <p class="mb-4 opacity-80">Built Azure Data Factory and PySpark pipelines to ingest 10M+ transactions into Azure Data Lake and Synapse, enabling real-time fraud detection.</p>
+                            <p class="mb-4 opacity-80">Reduced processing latency by 40% using Databricks optimization, supporting $1B+ portfolio analytics.</p>
+                            <div class="flex flex-wrap mt-4">
+                                <span class="badge">Azure Data Factory</span>
+                                <span class="badge">PySpark</span>
+                                <span class="badge">Data Lake</span>
+                                <span class="badge">Databricks</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card glass p-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="project-content">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-yellow-500 rounded-full p-3 mr-4">
+                                    <i class="fas fa-robot text-white text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold">IoT Telemetry Data Platform</h3>
+                            </div>
+                            <div class="mb-4 text-sm text-yellow-300">John Deere, 2022</div>
+                            <p class="mb-4 opacity-80">Developed AWS Glue and Kinesis pipelines to process 5TB+ of machinery sensor data, enabling predictive maintenance for 10,000+ units.</p>
+                            <p class="mb-4 opacity-80">Optimized Redshift queries, cutting report generation time by 50% for 100+ users.</p>
+                            <div class="flex flex-wrap mt-4">
+                                <span class="badge">AWS Glue</span>
+                                <span class="badge">Kinesis</span>
+                                <span class="badge">Redshift</span>
+                                <span class="badge">IoT</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card glass p-6" data-aos="fade-up" data-aos-delay="200">
+                        <div class="project-content">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-green-500 rounded-full p-3 mr-4">
+                                    <i class="fas fa-boxes text-white text-xl"></i>
+                                </div>
+                                <h3 class="text-xl font-bold">Supply Chain Optimization</h3>
+                            </div>
+                            <div class="mb-4 text-sm text-green-300">Infosys, 2020</div>
+                            <p class="mb-4 opacity-80">Engineered GCP Dataflow pipelines to process 1TB+/day of sales data, improving inventory forecasting accuracy by 20%.</p>
+                            <p class="mb-4 opacity-80">Used BigQuery and Spark for analytics, supporting marketing strategies for 50+ product lines.</p>
+                            <div class="flex flex-wrap mt-4">
+                                <span class="badge">GCP Dataflow</span>
+                                <span class="badge">BigQuery</span>
+                                <span class="badge">Spark</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="section relative z-10 py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center glow-text" data-aos="fade-up">Education & Certifications</h2>
+            <div class="glass p-8 max-w-5xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="card glass p-6" data-aos="fade-up">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-purple-500 rounded-full p-3 mr-4">
+                                <i class="fas fa-graduation-cap text-white text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Masters in Statistics and Decision Analytics</h3>
+                        </div>
+                        <div class="mb-2 text-sm text-purple-300">Western Illinois University, USA</div>
+                        <div class="mb-4 flex items-center">
+                            <i class="fas fa-star text-yellow-500 mr-2"></i>
+                            <span>GPA: 3.60</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card glass p-6" data-aos="fade-up" data-aos-delay="100">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-purple-500 rounded-full p-3 mr-4">
+                                <i class="fas fa-graduation-cap text-white text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Bachelor of Technology in Mechanical Engineering</h3>
+                        </div>
+                        <div class="mb-2 text-sm text-purple-300">India</div>
+                        <div class="mb-4 flex items-center">
+                            <i class="fas fa-star text-yellow-500 mr-2"></i>
+                            <span>GPA: 3.00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 class="text-2xl font-bold my-8 text-center" data-aos="fade-up">Professional Certifications</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="card glass p-5 text-center" data-aos="fade-up">
+                        <div class="text-4xl mb-3 text-blue-400">
+                            <i class="fab fa-microsoft"></i>
+                        </div>
+                        <h4 class="text-lg font-bold mb-2">Azure Data Engineer Associate</h4>
+                        <div class="text-sm opacity-70 mb-2">2023</div>
+                        <span class="badge inline-block">Microsoft Certified</span>
+                    </div>
+                    
+                    <div class="card glass p-5 text-center" data-aos="fade-up" data-aos-delay="100">
+                        <div class="text-4xl mb-3 text-yellow-500">
+                            <i class="fab fa-aws"></i>
+                        </div>
+                        <h4 class="text-lg font-bold mb-2">AWS Certified Big Data - Specialty</h4>
+                        <div class="text-sm opacity-70 mb-2">2022</div>
+                        <span class="badge inline-block">Amazon Web Services</span>
+                    </div>
+                    
+                    <div class="card glass p-5 text-center" data-aos="fade-up" data-aos-delay="200">
+                        <div class="text-4xl mb-3 text-green-500">
+                            <i class="fab fa-google"></i>
+                        </div>
+                        <h4 class="text-lg font-bold mb-2">Google Cloud Professional Data Engineer</h4>
+                        <div class="text-sm opacity-70 mb-2">2021</div>
+                        <span class="badge inline-block">Google Cloud</span>
+                    </div>
+                    
+                    <div class="card glass p-5 text-center" data-aos="fade-up" data-aos-delay="300">
+                        <div class="text-4xl mb-3 text-blue-500">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h4 class="text-lg font-bold mb-2">Data Camp Certifications</h4>
+                        <div class="text-sm opacity-70 mb-2">Various</div>
+                        <span class="badge inline-block">Continuous Learning</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <footer class="section relative z-10 py-16">
+        <div class="container mx-auto px-4">
+            <div class="glass p-8 max-w-5xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center glow-text">Get In Touch</h2>
+                <div class="text-center mb-8">
+                    <p class="text-lg mb-8">Ready to transform your data into actionable insights? Let's connect!</p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <a href="mailto:vvinodvemula03@gmail.com" class="flex items-center gap-2 badge text-lg px-6 py-3 hover:scale-105 transition-transform">
+                            <i class="fas fa-envelope"></i> vvinodvemula03@gmail.com
+                        </a>
+                        <a href="tel:+12795003888" class="flex items-center gap-2 badge text-lg px-6 py-3 hover:scale-105 transition-transform">
+                            <i class="fas fa-phone"></i> (279) 500-3888
+                        </a>
+                        <a href="https://linkedin.com/in/vinod-kumar-vemula007" target="_blank" class="flex items-center gap-2 badge text-lg px-6 py-3 hover:scale-105 transition-transform">
+                            <i class="fab fa-linkedin"></i> LinkedIn Profile
+                        </a>
+                    </div>
+                </div>
+                <div class="text-center opacity-70 mt-12">
+                    <p>© 2023 Vinod Kumar Vemula. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS
+            AOS.init({
+                duration: 800,
+                easing: 'ease-out',
+                once: true
+            });
+            
+            // Initialize progress bars
+            setTimeout(function() {
+                document.querySelectorAll('.prog-bar').forEach(function(bar) {
+                    const value = bar.getAttribute('data-value');
+                    bar.querySelector('.prog-bar-fill').style.width = value + '%';
+                });
+                
+                document.getElementById('profile-completion').style.width = '30%';
+            }, 500);
+            
+            // Initialize progress rings
+            document.querySelectorAll('.progress-ring-circle').forEach(function(circle) {
+                const radius = circle.r.baseVal.value;
+                const circumference = radius * 2 * Math.PI;
+                
+                circle.style.strokeDasharray = `${circumference} ${circumference}`;
+                const offset = circle.getAttribute('stroke-dashoffset');
+                circle.style.strokeDashoffset = offset;
+            });
+            
+            // Set up moon rotation animation
+            const moons = document.querySelectorAll('.moon');
+            let angle = 0;
+            
+            function rotateMoons() {
+                const radius = 150;
+                
+                moons.forEach(function(moon, index) {
+                    const moonAngle = angle + (index * 120);
+                    const moonX = radius * Math.cos(moonAngle * Math.PI / 180);
+                    const moonY = radius * Math.sin(moonAngle * Math.PI / 180);
+                    
+                    moon.style.transform = `translate(${moonX}px, ${moonY}px)`;
+                });
+                
+                angle = (angle + 0.2) % 360;
+                requestAnimationFrame(rotateMoons);
+            }
+            
+            rotateMoons();
+            
+            // Gamification elements
+            let achievements = 0;
+            const progressFill = document.getElementById('profile-completion');
+            
+            // Unlock achievements as user scrolls
+            window.addEventListener('scroll', function() {
+                const scrollPosition = window.scrollY;
+                const totalHeight = document.body.scrollHeight - window.innerHeight;
+                const scrollPercentage = (scrollPosition / totalHeight) * 100;
+                
+                // Update progress based on scroll
+                progressFill.style.width = Math.min(30 + (scrollPercentage * 0.7), 100) + '%';
+                
+                // Unlock achievements based on scroll position
+                if (scrollPercentage > 30 && achievements < 1) {
+                    achievements = 1;
+                    document.querySelector('.achievement.locked .achievement-icon i').className = 'fas fa-award';
+                    document.querySelector('.achievement.locked').classList.remove('locked');
+                    document.querySelector('.achievement:nth-child(4) .font-bold').textContent = 'Explorer';
+                    document.querySelector('.achievement:nth-child(4) .opacity-70').textContent = 'Unlocked!';
+                }
+            });
+            
+            // Initialize particles.js
+            particlesJS('particles-js', {
+                particles: {
+                    number: {
+                        value: 80,
+                        density: {
+                            enable: true,
+                            value_area: 800
+                        }
+                    },
+                    color: {
+                        value: '#4F46E5'
+                    },
+                    shape: {
+                        type: 'circle',
+                        stroke: {
+                            width: 0,
+                            color: '#000000'
+                        },
+                        polygon: {
+                            nb_sides: 5
+                        }
+                    },
+                    opacity: {
+                        value: 0.3,
+                        random: false,
+                        anim: {
+                            enable: false,
+                            speed: 1,
+                            opacity_min: 0.1,
+                            sync: false
+                        }
+                    },
+                    size: {
+                        value: 3,
+                        random: true,
+                        anim: {
+                            enable: false,
+                            speed: 40,
+                            size_min: 0.1,
+                            sync: false
+                        }
+                    },
+                    line_linked: {
+                        enable: true,
+                        distance: 150,
+                        color: '#4F46E5',
+                        opacity: 0.2,
+                        width: 1
+                    },
+                    move: {
+                        enable: true,
+                        speed: 2,
+                        direction: 'none',
+                        random: false,
+                        straight: false,
+                        out_mode: 'out',
+                        bounce: false,
+                        attract: {
+                            enable: false,
+                            rotateX: 600,
+                            rotateY: 1200
+                        }
+                    }
+                },
+                interactivity: {
+                    detect_on: 'canvas',
+                    events: {
+                        onhover: {
+                            enable: true,
+                            mode: 'repulse'
+                        },
+                        onclick: {
+                            enable: true,
+                            mode: 'push'
+                        },
+                        resize: true
+                    },
+                    modes: {
+                        grab: {
+                            distance: 140,
+                            line_linked: {
+                                opacity: 1
+                            }
+                        },
+                        bubble: {
+                            distance: 400,
+                            size: 40,
+                            duration: 2,
+                            opacity: 8,
+                            speed: 3
+                        },
+                        repulse: {
+                            distance: 100,
+                            duration: 0.4
+                        },
+                        push: {
+                            particles_nb: 4
+                        },
+                        remove: {
+                            particles_nb: 2
+                        }
+                    }
+                },
+                retina_detect: true
+            });
+        });
+    </script>
+</body>
+</html>
